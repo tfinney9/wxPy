@@ -1,0 +1,2 @@
+WRF WindNinja Simulation
+All Time is in Local Date Time. Simulation Valid For: 2017-05-19

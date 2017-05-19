@@ -1,0 +1,65 @@
+<div class="col col-6">
+<h1 style="color:black;">A</h1>
+<html>
+<head>
+<style>
+body
+{
+color:#00C6FF
+}
+</style>
+<script
+src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyBL2JbHu9cN3mSvKDvi_VPDQJHPwT2_w8M">
+</script>
+<script>
+var myCenter=new google.maps.LatLng(46.9163056,-114.0905556);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:11,
+  mapTypeId:google.maps.MapTypeId.TERRAIN,
+  styles: [{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#aee2e0"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#abce83"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#769E72"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#7B8758"}]},{"featureType":"poi","elementType":"labels.text.stroke","stylers":[{"color":"#EBF4A4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"visibility":"simplified"},{"color":"#8dab68"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#5B5B3F"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"color":"#ABCE83"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#A4C67D"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#9BBF72"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#EBF4A4"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"color":"#87ae79"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#7f2200"},{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"on"},{"weight":4.1}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#495421"}]},{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]}]
+  };
+
+var map2=new google.maps.Map(document.getElementById("googleMap0"),mapProp);
+
+  var ctaLayer2 = new google.maps.KmlLayer({
+    url: 'http://windninja.wfmrda.org/ninjadata/pStandard.kml',
+    map: map2
+  });
+  var ctaLayer2 = new google.maps.KmlLayer({
+    url: 'http://windninja.wfmrda.org/ninjadata/clark.kml',
+    map: map2
+  });
+  layers [0] = new google.maps.KmlLayer('http://www.bramvandenbulcke.be/maps/vlaanderen-bereikbaarheid/gebouwen.kmz',
+  {preserveViewport: true, suppressInfoWindows: false});
+layers [1] = new google.maps.KmlLayer('http://www.bramvandenbulcke.be/maps/vlaanderen-bereikbaarheid/haltes.kmz',
+  {preserveViewport: true, suppressInfoWindows: false});
+layers [2] = new google.maps.KmlLayer('http://www.bramvandenbulcke.be/maps/vlaanderen-bereikbaarheid/fietsroutes.kmz',
+  {preserveViewport: true, suppressInfoWindows: false});
+layers [3] = new google.maps.KmlLayer('http://www.bramvandenbulcke.be/maps/vlaanderen-bereikbaarheid/fietsenstallingen.kmz',
+  {preserveViewport: true, suppressInfoWindows: false});
+for (var i = 0; i < layers.length; i++) {
+        layers[i].setMap(null);
+      }
+      function toggleLayer(i) {
+  if (layers[i].getMap() === null) {
+    layers[i].setMap(map);
+  }
+  else {
+    layers[i].setMap(null);
+  }
+}
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+<div id="googleMap0" style="width:470px;height:480px;"></div>
+</body>
+</html>

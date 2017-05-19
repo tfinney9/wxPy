@@ -1,0 +1,1 @@
+scp -r -i "WindNinjaMobile.pem" /home/tfinney/ninjaoutput/ ubuntu@ec2-52-222-19-7.us-gov-west-1.compute.amazonaws.com:/home/ubuntu/ninjaonline/
