@@ -46,12 +46,13 @@
 
 var map;
 var layers = [];
+var myCenter=new google.maps.LatLng(46.9163056,-114.0905556);
 
   function initialize() {
     // var myLatLng = new google.maps.LatLng(46.9163056,-114.0905556);
     var myOptions = {
-      zoom: 14,
-      // center: myLatLng,
+      zoom: 10,
+      center: myCenter,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       styles:
       [{"elementType": "geometry","stylers": [{"color": "#ebe3cd"}]},{"elementType": "labels.text.fill","stylers": [{"color": "#523735"}]},{"elementType": "labels.text.stroke","stylers": [{"color": "#f5f1e6"}]},{"featureType": "administrative","elementType": "geometry.stroke","stylers": [{"color": "#c9b2a6"}]},{"featureType": "administrative.land_parcel","elementType": "geometry.stroke","stylers": [{"color": "#dcd2be"}]},{"featureType": "administrative.land_parcel","elementType": "labels.text.fill","stylers": [{"color": "#ae9e90"}]},{"featureType": "landscape.natural","elementType": "geometry","stylers": [{"color": "#dfd2ae"}]},{"featureType": "landscape.natural","elementType": "geometry.fill","stylers": [{"color": "#c2ce89"}]},{"featureType": "poi","elementType": "geometry","stylers": [{"color": "#dfd2ae"}]},{"featureType": "poi","elementType": "labels.text.fill","stylers": [{"color": "#93817c"}]},{"featureType": "poi.park","elementType": "geometry.fill","stylers": [{"color": "#a5b076"}]},{"featureType": "poi.park","elementType": "labels.text.fill","stylers": [{"color": "#447530"}]},{"featureType": "road","elementType": "geometry","stylers": [{"color": "#f5f1e6"}]},{"featureType": "road.arterial","elementType": "geometry","stylers": [{"color": "#fdfcf8"}]},{"featureType": "road.highway","elementType": "geometry","stylers": [{"color": "#f8c967"}]},{"featureType": "road.highway","elementType": "geometry.stroke","stylers": [{"color": "#e9bc62"}]},{"featureType": "road.highway.controlled_access","elementType": "geometry","stylers": [{"color": "#e98d58"}]},{"featureType": "road.highway.controlled_access","elementType": "geometry.stroke","stylers": [{"color": "#db8555"}]},{"featureType": "road.local","elementType": "labels.text.fill","stylers": [{"color": "#806b63"}]},{"featureType": "transit.line","elementType": "geometry","stylers": [{"color": "#dfd2ae"}]},{"featureType": "transit.line","elementType": "labels.text.fill","stylers": [{"color": "#8f7d77"}]},{"featureType": "transit.line","elementType": "labels.text.stroke","stylers": [{"color": "#ebe3cd"}]},{"featureType": "transit.station","elementType": "geometry","stylers": [{"color": "#dfd2ae"}]},{"featureType": "water","elementType": "geometry.fill","stylers": [{"color": "#31404d"}]},{"featureType": "water","elementType": "labels.text.fill","stylers": [{"color": "#92998d"}]}]
@@ -59,21 +60,9 @@ var layers = [];
 
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    layers [0]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/1200.kml',
+    layers [0]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/-201.kml',
     {preserveViewport: false, suppressInfoWindows: false});
-    layers [1]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/1300.kml',
-    {preserveViewport: false, suppressInfoWindows: false});
-    layers [2]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/1400.kml',
-    {preserveViewport: false, suppressInfoWindows: false});
-    layers [3]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/1500.kml',
-    {preserveViewport: false, suppressInfoWindows: false});
-    layers [4]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/wrf1200.kml',
-    {preserveViewport: false, suppressInfoWindows: false});
-    layers [5]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/wrf1300.kml',
-    {preserveViewport: false, suppressInfoWindows: false});
-    layers [6]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/wrf1400.kml',
-    {preserveViewport: false, suppressInfoWindows: false});
-    layers [7]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/wrf1500.kml',
+    layers [1]= new google.maps.KmlLayer('http://windninja.wfmrda.org/ninjadata/wrf-201.kml',
     {preserveViewport: false, suppressInfoWindows: false});
 for (var i = 0; i < layers.length; i++) {
         layers[i].setMap(null);
@@ -95,18 +84,12 @@ function toggleLayer(i) {
 <body onload="initialize()">
 <div id="map_canvas"></div>
 <div id="checkboxes">
-  </>WindNinja Sims<br />
-  <input type="checkbox" id="layer0" onClick="toggleLayer(0)"/>1200 <br />
-  <input type="checkbox" id="layer1" onClick="toggleLayer(1)"/>1300 <br />
-  <input type="checkbox" id="layer2" onClick="toggleLayer(2)"/>1400 <br />
-  <input type="checkbox" id="layer3" onClick="toggleLayer(3)"/>1500 <br />
+  </>WindNinja<br />
+  <input type="checkbox" id="layer0" onClick="toggleLayer(0)"/>-201 <br />
 </div>
 <div id="wrfCheckBoxes">
-  </>WRF Files<br />
-  <input type="checkbox" id="layer4" onClick="toggleLayer(4)"/>1200 <br />
-  <input type="checkbox" id="layer5" onClick="toggleLayer(5)"/>1300 <br />
-  <input type="checkbox" id="layer6" onClick="toggleLayer(6)"/>1400 <br />
-  <input type="checkbox" id="layer7" onClick="toggleLayer(7)"/>1500 <br />
+  </>WRF<br />
+  <input type="checkbox" id="layer1" onClick="toggleLayer(1)"/>-201 <br />
 </div>
 <div id="infobox"><iframe src="http://windninja.wfmrda.org/ninjadata/wxLog.txt" style="background: #FFFFFF;" height="60"  width="600"></iframe>
 </div>

@@ -74,11 +74,11 @@ def removeZips():
 def cleanOverwrite():
     vZ=glob.glob("/home/tfinney/wxPy/overwrite/kml/*")
     dZ=glob.glob("/home/tfinney/wxPy/overwrite/datetime/*")
-    bZ=glob.glob("/home/tfinney/wxPy/overwrite/key/*")
+#    bZ=glob.glob("/home/tfinney/wxPy/overwrite/key/*")
     for i in range(len(vZ)):
         os.remove(vZ[i])
         os.remove(dZ[i])
-        os.remove(bZ[i])
+#        os.remove(bZ[i])
 
 def cleanTestDir():
     kZ=glob.glob("/home/tfinney/ninjaoutput/wrfSim/kml/*")
@@ -93,8 +93,8 @@ def cleanKMZDir():
 def writeLogFile():
     print "writing logFile..."
     log=open('/home/tfinney/wxPy/wxLog.txt','w')
-    log.write('High-resolution WRF\n')
-    log.write('All timesteps are in local time. ')
+    log.write('High-Resolution WRF\n')
+    log.write('All timesteps are in local time (MDT).\n')
     log.write('Simulation valid for: ')
     log.write(str(datetime.datetime.now())[:-16])
     log.close()
